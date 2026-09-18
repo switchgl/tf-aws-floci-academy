@@ -1,0 +1,26 @@
+{
+  "tracks": [
+    {"id": "beginner", "title": "Beginner", "summary": "Language, state, first AWS building blocks."},
+    {"id": "intermediate", "title": "Intermediate", "summary": "Compute, APIs, events, serverless three-tier."},
+    {"id": "expert", "title": "Expert", "summary": "Networking, RDS, classic three-tier, capstone."}
+  ],
+  "labs": [
+    {"id": "01-hello-s3", "track": "beginner", "title": "Hello, S3", "duration": "25 min", "services": ["S3"], "concepts": ["resource", "output"]},
+    {"id": "02-variables-and-tags", "track": "beginner", "title": "Variables, locals, and tags", "duration": "30 min", "services": ["S3"], "concepts": ["variable", "tfvars"]},
+    {"id": "03-iam-ssm", "track": "beginner", "title": "IAM roles and SSM parameters", "duration": "35 min", "services": ["IAM", "SSM"], "concepts": ["least privilege"]},
+    {"id": "04-data-plane", "track": "beginner", "title": "DynamoDB, SQS, and SNS", "duration": "40 min", "services": ["DynamoDB", "SQS", "SNS"], "concepts": ["dependencies"]},
+    {"id": "05-remote-state", "track": "beginner", "title": "Remote state on Floci", "duration": "35 min", "services": ["S3", "DynamoDB"], "concepts": ["backend"]},
+    {"id": "06-first-module", "track": "beginner", "title": "Your first module", "duration": "40 min", "services": ["S3"], "concepts": ["module"]},
+    {"id": "07-lambda-iam", "track": "intermediate", "title": "Lambda with an execution role", "duration": "45 min", "services": ["Lambda", "IAM"], "concepts": ["zip deploy"]},
+    {"id": "08-http-api", "track": "intermediate", "title": "HTTP API in front of Lambda", "duration": "45 min", "services": ["API Gateway v2", "Lambda"], "concepts": ["integration"]},
+    {"id": "09-secrets-kms", "track": "intermediate", "title": "Secrets Manager and KMS", "duration": "35 min", "services": ["Secrets Manager", "KMS"], "concepts": ["sensitive"]},
+    {"id": "10-event-pipeline", "track": "intermediate", "title": "S3 to SQS to Lambda", "duration": "50 min", "services": ["S3", "SQS", "Lambda"], "concepts": ["events"]},
+    {"id": "11-serverless-three-tier", "track": "intermediate", "title": "Serverless three-tier web app", "duration": "70 min", "services": ["S3", "API Gateway v2", "Lambda", "DynamoDB"], "concepts": ["composition"]},
+    {"id": "12-foreach-workspaces", "track": "intermediate", "title": "for_each, count, and workspaces", "duration": "40 min", "services": ["S3", "SQS"], "concepts": ["for_each"]},
+    {"id": "13-custom-vpc", "track": "expert", "title": "Custom VPC and security groups", "duration": "50 min", "services": ["EC2/VPC"], "concepts": ["subnets"]},
+    {"id": "14-rds-postgres", "track": "expert", "title": "RDS PostgreSQL with a secret", "duration": "45 min", "services": ["RDS", "Secrets Manager"], "concepts": ["data plane"]},
+    {"id": "15-three-tier-classic", "track": "expert", "title": "Classic three-tier on Floci", "duration": "90 min", "services": ["VPC", "ELBv2", "RDS"], "concepts": ["modules"]},
+    {"id": "16-production-terraform", "track": "expert", "title": "Production Terraform habits", "duration": "50 min", "services": ["S3", "DynamoDB"], "concepts": ["plan files"]},
+    {"id": "17-capstone", "track": "expert", "title": "Capstone: multi-module platform", "duration": "120 min", "services": ["VPC", "S3", "APIGW", "Lambda", "DynamoDB"], "concepts": ["composition"]}
+  ]
+}
