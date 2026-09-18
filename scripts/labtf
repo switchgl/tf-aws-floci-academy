@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+set -euo pipefail
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+source "$ROOT/scripts/env.sh" >/dev/null
+TF_BIN="${ROOT}/vendor/bin/terraform"
+if [[ ! -x "$TF_BIN" ]]; then
+  TF_BIN="$(command -v terraform || true)"
+fi
+if [[ -z "$TF_BIN" ]]; then
+  echo "terraform not found. Run scripts/bootstrap-online.sh" >&2
+  exit 1
+fi
+export CHECKPOINT_DISABLE=1
+export TF_CLI_CONFIG_FILE="${TF_CLI_CONFIG_FILE:-$ROOT/vendor/terraform.rc}"
+exec "$TF_BIN" "$@"
