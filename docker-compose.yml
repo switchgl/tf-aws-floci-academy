@@ -1,0 +1,36 @@
+services:
+  floci:
+    image: floci/floci:latest
+    container_name: tf-academy-floci
+    ports:
+      - "4566:4566"
+      - "7001-7010:7001-7010"
+    volumes:
+      - ./data/floci:/app/data
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      FLOCI_SERVICES_RDS_PROXY_BASE_PORT: "7001"
+      FLOCI_SERVICES_RDS_PROXY_MAX_PORT: "7010"
+    restart: unless-stopped
+
+  academy:
+    build:
+      context: ./portal
+    container_name: tf-academy-portal
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./labs:/app/labs:ro
+      - ./shared:/app/shared:ro
+      - ./docs:/app/docs:ro
+      - ./.progress.json:/app/.progress.json
+    environment:
+      FLOCI_ENDPOINT: http://floci:4566
+      AWS_ACCESS_KEY_ID: test
+      AWS_SECRET_ACCESS_KEY: test
+      AWS_DEFAULT_REGION: us-east-1
+      AWS_EC2_METADATA_DISABLED: "true"
+      ACADEMY_ROOT: /app
+    depends_on:
+      - floci
+    restart: unless-stopped
