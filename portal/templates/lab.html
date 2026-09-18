@@ -1,0 +1,4 @@
+{% extends "base.html" %}{% block title %}{{ lab.title }}{% endblock %}{% block content %}<p><a href="/">Labs</a> / {{ lab.id }}</p><article class="labdoc">{{ body | safe }}</article><section><h2>Run the lab</h2><pre class="cmd">./scripts/new-lab.sh {{ lab.id }}
+cd workspaces/{{ lab.id }}
+source ../../scripts/env.sh
+labtf init && labtf plan</pre><button id="check-btn" data-lab="{{ lab.id }}">Check my Floci account</button><pre id="check-out"></pre></section><script>const btn=document.getElementById('check-btn');const out=document.getElementById('check-out');btn.onclick=async()=>{btn.disabled=true;try{const data=await (await fetch('/api/labs/'+btn.dataset.lab+'/check')).json();out.textContent=(data.summary||'')+'\n'+(data.checks||[]).map(c=>(c.ok?'PASS':'FAIL')+'  '+c.name+' — '+c.detail).join('\n');}finally{btn.disabled=false;}};</script>{% endblock %}
